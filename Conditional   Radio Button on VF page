@@ -1,0 +1,52 @@
+<apex:page>
+    <script>
+        function toggleOtherSection() {
+            var radios = document.getElementsByName("interest");
+            var selectedValue = "";
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selectedValue = radios[i].value;
+                    break;
+                }
+            }
+            var otherSection = document.getElementById("otherSection");
+            if (selectedValue === "Other") {
+                otherSection.style.display = "block";
+            } else {
+                otherSection.style.display = "none";
+            }
+        }
+    </script>
+    
+    <fieldset>
+        <legend>What is your primary area of interest?</legend>
+        <div id="interestContainer">
+            <label>
+                <input type="radio" name="interest" value="Sports" onclick="toggleOtherSection()" />
+                Sports
+            </label>
+            <label>
+                <input type="radio" name="interest" value="Arts" onclick="toggleOtherSection()" />
+                Arts
+            </label>
+            <label>
+                <input type="radio" name="interest" value="Technology" onclick="toggleOtherSection()" />
+                Technology
+            </label>
+            <label>
+                <input type="radio" name="interest" value="Other" onclick="toggleOtherSection()" />
+                Other
+            </label>
+        </div>
+    </fieldset>
+    
+    <!-- Container panel that shows the additional input field when "Other" is selected -->
+    <div id="otherSection" style="display:none; margin-top:10px;">
+        <label for="otherInterest">Please specify your interest:</label>
+        <input type="text" id="otherInterest" name="otherInterest" required="required" />
+    </div>
+</apex:page>
+
+
+
+video
